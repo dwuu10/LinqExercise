@@ -51,10 +51,11 @@ namespace LinqExercise
             //TODO: Order numbers in any order (ascending or desc) but only print 4 of them **foreach loop only!**
             var firstFour = asc.Take(4);
 
-            foreach (int i in firstFour) 
+            foreach (var i in firstFour) 
             {
                 Console.WriteLine(i);
             }
+            Console.WriteLine("-----------");
             //TODO: Change the value at index 4 to your age, then print the numbers in descending order
             numbers[4] = 19;
             foreach (int i in numbers.OrderByDescending(x => x))
@@ -80,7 +81,7 @@ namespace LinqExercise
             }
             Console.WriteLine("-----------");
             //TODO: Print the Sum and then the Average of the employees' YearsOfExperience if their YOE is less than or equal to 10 AND Age is greater than 35.
-            var experienced = employees.Where(x => x.YearsOfExperience >= 10 && x.Age > 35);
+            var experienced = employees.Where(x => x.YearsOfExperience <= 10 && x.Age > 35);
             var empSum = experienced.Sum(x => x.YearsOfExperience);
             var empAvg = experienced.Average(x => x.YearsOfExperience);
             Console.WriteLine(empSum);
@@ -88,6 +89,11 @@ namespace LinqExercise
             Console.WriteLine("-----------");
             //TODO: Add an employee to the end of the list without using employees.Add()
             employees = employees.Append(new Employee("Dylan", "Wuu", 19, 1)).ToList();
+
+            foreach (var emp in employees)
+            {
+                Console.WriteLine($"{ emp.FullName}, {emp.Age}");
+            }
 
             Console.WriteLine();
 
